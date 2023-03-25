@@ -1,5 +1,5 @@
 #IMPORTNG LIBRARIES
-from flask import Flask,render_template,request
+from flask import Flask,render_template,request,jsonify
 from tensorflow import keras
 
 import numpy as np
@@ -14,6 +14,12 @@ from tensorflow.python.keras.preprocessing.image import img_to_array
 app = Flask(__name__)
 app.config['DEBUG'] = True
 #ROUTES 
+
+#return json
+@app.route("/returnjson",methods=['GET'])
+def jsonres():
+    response={"message":"welcome to the page"}
+    return jsonify(response), 200
 
 #HOME PAGE
 @app.route("/")
